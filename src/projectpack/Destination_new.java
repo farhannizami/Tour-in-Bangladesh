@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projectpack;
 
-/**
- *
- * @author Network Lab
- */
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class Destination_new extends javax.swing.JFrame {
 
     /**
@@ -33,7 +27,7 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        profilelb = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -42,8 +36,8 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        to_slt = new javax.swing.JComboBox();
+        from_slt = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,11 +61,16 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(8, 49, 64));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Profile");
-        jPanel4.add(jLabel2);
+        profilelb.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        profilelb.setForeground(new java.awt.Color(255, 255, 255));
+        profilelb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profilelb.setText("Logout");
+        profilelb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profilelbMouseClicked(evt);
+            }
+        });
+        jPanel4.add(profilelb);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 40));
 
@@ -110,13 +109,23 @@ public class Destination_new extends javax.swing.JFrame {
         jLabel3.setText("From: ");
         jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 60, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 370, -1));
+        to_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        to_slt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                to_sltActionPerformed(evt);
+            }
+        });
+        jPanel8.add(to_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 370, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel8.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 370, -1));
+        from_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        jPanel8.add(from_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 370, -1));
 
         jButton1.setText("Find Route");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 350));
@@ -125,6 +134,50 @@ public class Destination_new extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void profilelbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilelbMouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_profilelbMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int st = from_slt.getSelectedIndex();
+        int to = to_slt.getSelectedIndex();
+        if(st==0 && to==0)
+        {
+            JFrame msg = new JFrame();
+            JOptionPane.showMessageDialog(msg,"Please Select Start Location and Destination");
+        }
+        else if(st==0)
+        {
+            JFrame msg = new JFrame();
+            JOptionPane.showMessageDialog(msg,"Please Select Start Location");
+        }
+        else if(to==0)
+        {
+            JFrame msg = new JFrame();
+            JOptionPane.showMessageDialog(msg,"Please Select Destination");
+        }
+        else if(st==to)
+        {
+            JFrame msg = new JFrame();
+            JOptionPane.showMessageDialog(msg,"Start Location and Destination Cannot Be Same");
+        }
+        else
+        {
+            TourPlaces t = new TourPlaces();
+            t.setFromTo(st, to);
+            t.setVisible(true);
+            this.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void to_sltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_to_sltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_to_sltActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +215,9 @@ public class Destination_new extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox from_slt;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -178,5 +229,7 @@ public class Destination_new extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel profilelb;
+    private javax.swing.JComboBox to_slt;
     // End of variables declaration//GEN-END:variables
 }

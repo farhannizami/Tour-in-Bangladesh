@@ -102,14 +102,18 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="tobox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="8">
+                        <StringItem index="0" value="Choose Destination"/>
+                        <StringItem index="1" value="Dhaka"/>
+                        <StringItem index="2" value="Chottogram"/>
+                        <StringItem index="3" value="Cox&apos;s Bazar"/>
+                        <StringItem index="4" value="Sylhet"/>
+                        <StringItem index="5" value="Bandonban"/>
+                        <StringItem index="6" value="Rangamati"/>
+                        <StringItem index="7" value="Kuakata"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -122,14 +126,18 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="frombox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="8">
+                        <StringItem index="0" value="Choose Start Location"/>
+                        <StringItem index="1" value="Dhaka"/>
+                        <StringItem index="2" value="Chottogram"/>
+                        <StringItem index="3" value="Cox&apos;s Bazar"/>
+                        <StringItem index="4" value="Sylhet"/>
+                        <StringItem index="5" value="Bandonban"/>
+                        <StringItem index="6" value="Rangamati"/>
+                        <StringItem index="7" value="Kuakata"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -987,22 +995,17 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="57" green="48" red="8" type="rgb"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="15" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Bus Routes"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1065,6 +1068,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Profile"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

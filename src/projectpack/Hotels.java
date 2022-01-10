@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package projectpack;
 
-/**
- *
- * @author Farhan Nasif Nizami
- */
+
 public class Hotels extends javax.swing.JFrame {
 
     /**
@@ -172,6 +165,11 @@ public class Hotels extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Profile");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel6.add(jLabel5);
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
@@ -197,10 +195,10 @@ public class Hotels extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
         jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
         jPanel8.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -443,6 +441,12 @@ public class Hotels extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        new Profile().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
