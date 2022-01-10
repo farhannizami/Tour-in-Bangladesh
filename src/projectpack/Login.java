@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package projectpack;
 
-/**
- *
- * @author Farhan Nasif Nizami
- */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -33,10 +37,10 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        emailbox = new javax.swing.JTextField();
+        create_one_lb = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pass_login = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -66,20 +70,37 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jButton1.setText("Sign in");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 240, 30));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 51));
-        jLabel4.setText("Create one");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 70, 20));
+        emailbox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emailbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailboxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(emailbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 30));
+
+        create_one_lb.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        create_one_lb.setForeground(new java.awt.Color(255, 255, 51));
+        create_one_lb.setText("Create one");
+        create_one_lb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                create_one_lbMouseClicked(evt);
+            }
+        });
+        jPanel1.add(create_one_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 70, 20));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Don't have an account? ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, 20));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, 30));
+        jPanel1.add(pass_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 290, 430));
 
@@ -93,6 +114,56 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String email = emailbox.getText();
+        String pass = pass_login.getText();
+        
+        ArrayList<String> alldata = new ArrayList<>();
+        File f = new File("login_database.csv");
+        try {
+            Scanner sc = new Scanner(f);
+            sc.useDelimiter(",");
+            while(sc.hasNext())
+            {
+                //System.out.println(sc.next());
+                //if(sc.next().equals(""))
+                alldata.add(sc.next());
+            }
+            boolean flag = false;
+            for(int i=1;i<alldata.size();i+=3)
+            {
+                //System.out.println(i+" "+alldata.get(i) +" "+ alldata.get(i+1));
+                //System.out.println(pass+" "+alldata.get(i+1)+" "+alldata.get(i+1).equals(pass));
+                pass+="\n";
+                if(email.equals(alldata.get(i)) && pass.equals(alldata.get(i+1)))
+                {
+                    flag=true;
+                    new Destination_new().setVisible(true);
+                    this.dispose();
+                }
+            }
+            if(flag==false)
+            {
+                JFrame msg = new JFrame();
+                JOptionPane.showMessageDialog(msg,"Email Or Password Typed Wrong");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void create_one_lbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_create_one_lbMouseClicked
+        // TODO add your handling code here:
+        new SignUp().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_create_one_lbMouseClicked
+
+    private void emailboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,16 +201,16 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel create_one_lb;
+    private javax.swing.JTextField emailbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField pass_login;
     // End of variables declaration//GEN-END:variables
 }
