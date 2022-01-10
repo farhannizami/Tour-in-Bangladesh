@@ -188,8 +188,8 @@ public class SignUp extends javax.swing.JFrame {
                 if(pass.equals(conpass)){
                 FileWriter fw;
                 try {
-                    fw = new FileWriter(f);
-                    fw.append(name+","+email+","+pass+"\n");
+                    fw = new FileWriter(f,true);
+                    fw.write(name+","+email+","+pass+"\n");
                     fw.flush();
                     fw.close();
                     new Destination_new().setVisible(true);

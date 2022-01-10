@@ -125,18 +125,25 @@ public class Login extends javax.swing.JFrame {
         try {
             Scanner sc = new Scanner(f);
             sc.useDelimiter(",");
-            while(sc.hasNext())
+            while(sc.hasNextLine())
             {
-                //System.out.println(sc.next());
-                //if(sc.next().equals(""))
-                alldata.add(sc.next());
+                String s = sc.nextLine();
+                //System.out.println(s+   "    s");
+                String[] sa = s.split(",");
+                for(int i=0;i<sa.length;i++)
+                    alldata.add(sa[i]);
             }
+            /*System.out.println(alldata.size());
+            for(int i=0;i<alldata.size();i++)
+            {
+                System.out.println(alldata.get(i));
+            }*/
             boolean flag = false;
             for(int i=1;i<alldata.size();i+=3)
             {
-                //System.out.println(i+" "+alldata.get(i) +" "+ alldata.get(i+1));
+             
                 //System.out.println(pass+" "+alldata.get(i+1)+" "+alldata.get(i+1).equals(pass));
-                pass+="\n";
+                
                 if(email.equals(alldata.get(i)) && pass.equals(alldata.get(i+1)))
                 {
                     flag=true;
