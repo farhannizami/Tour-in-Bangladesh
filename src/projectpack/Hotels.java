@@ -3,6 +3,8 @@ package projectpack;
 
 public class Hotels extends javax.swing.JFrame {
 
+    
+    private int fromind,toind;
     /**
      * Creates new form Hotels
      */
@@ -10,6 +12,14 @@ public class Hotels extends javax.swing.JFrame {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
+    }
+    
+    public void setInd(int sti,int di)
+    {
+        frombox.setSelectedIndex(sti);
+        tobox.setSelectedIndex(di);
+        fromind = sti;
+        toind = di;
     }
 
     /**
@@ -30,14 +40,14 @@ public class Hotels extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        profiletab = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tobox = new javax.swing.JComboBox<>();
+        frombox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -132,6 +142,11 @@ public class Hotels extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tourist Attractions");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel1);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 40));
@@ -143,6 +158,11 @@ public class Hotels extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Bus Routes");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel2);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 40));
@@ -161,16 +181,16 @@ public class Hotels extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(8, 49, 64));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Profile");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        profiletab.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        profiletab.setForeground(new java.awt.Color(255, 255, 255));
+        profiletab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profiletab.setText("Profile");
+        profiletab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                profiletabMouseClicked(evt);
             }
         });
-        jPanel6.add(jLabel5);
+        jPanel6.add(profiletab);
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
 
@@ -195,11 +215,11 @@ public class Hotels extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
+        tobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        jPanel8.add(tobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
+        frombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        jPanel8.add(frombox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("To:");
@@ -442,11 +462,31 @@ public class Hotels extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void profiletabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profiletabMouseClicked
         // TODO add your handling code here:
-        new Profile().setVisible(true);
+        Profile pf = new Profile();
+        //new Profile().setVisible(true);
+        pf.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_profiletabMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        fromind = frombox.getSelectedIndex();
+        toind = tobox.getSelectedIndex();
+        TourPlaces t = new TourPlaces();
+        t.setFromTo(fromind, toind);
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        BusRoutes br = new BusRoutes();
+        br.setInd(fromind, toind);
+        br.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -484,6 +524,7 @@ public class Hotels extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> frombox;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -524,13 +565,10 @@ public class Hotels extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -568,5 +606,7 @@ public class Hotels extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel profiletab;
+    private javax.swing.JComboBox<String> tobox;
     // End of variables declaration//GEN-END:variables
 }

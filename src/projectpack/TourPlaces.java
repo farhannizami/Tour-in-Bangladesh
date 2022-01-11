@@ -9,8 +9,8 @@ public class TourPlaces extends javax.swing.JFrame {
     
     public void setFromTo(int sti,int di)
     {
-        from_slt.setSelectedIndex(sti);
-        to_slt.setSelectedIndex(di);
+        frombox.setSelectedIndex(sti);
+        tobox.setSelectedIndex(di);
         fromind = sti;
         toind = di;
     }
@@ -46,8 +46,8 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
-        to_slt = new javax.swing.JComboBox<>();
-        from_slt = new javax.swing.JComboBox<>();
+        tobox = new javax.swing.JComboBox<>();
+        frombox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -185,6 +185,11 @@ public class TourPlaces extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Hotels");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel3);
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 40));
@@ -226,11 +231,11 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        to_slt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(to_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
+        tobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        jPanel8.add(tobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
 
-        from_slt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(from_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
+        frombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        jPanel8.add(frombox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("To:");
@@ -584,6 +589,16 @@ public class TourPlaces extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_busroutestabMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        fromind = frombox.getSelectedIndex();
+        toind = tobox.getSelectedIndex();
+        Hotels ht = new Hotels();
+        ht.setInd(fromind, toind);
+        ht.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -621,7 +636,7 @@ public class TourPlaces extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel busroutestab;
-    private javax.swing.JComboBox<String> from_slt;
+    private javax.swing.JComboBox<String> frombox;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton13;
@@ -730,6 +745,6 @@ public class TourPlaces extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> to_slt;
+    private javax.swing.JComboBox<String> tobox;
     // End of variables declaration//GEN-END:variables
 }

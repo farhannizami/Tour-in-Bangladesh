@@ -1,7 +1,11 @@
 package projectpack;
 
+import javax.swing.JFrame;
+
 public class Profile extends javax.swing.JFrame {
 
+    
+    //private JFrame prv ;
     /**
      * Creates new form Profile
      */
@@ -10,6 +14,11 @@ public class Profile extends javax.swing.JFrame {
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
     }
+    
+//    public Profile(JFrame jf)
+//    {
+//        prv = jf;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,7 +35,7 @@ public class Profile extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        hoteltab = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -71,11 +80,16 @@ public class Profile extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(8, 49, 64));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Hotels");
-        jPanel5.add(jLabel3);
+        hoteltab.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        hoteltab.setForeground(new java.awt.Color(255, 255, 255));
+        hoteltab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hoteltab.setText("Hotels");
+        hoteltab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hoteltabMouseClicked(evt);
+            }
+        });
+        jPanel5.add(hoteltab);
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 40));
 
@@ -141,6 +155,12 @@ public class Profile extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void hoteltabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hoteltabMouseClicked
+        // TODO add your handling code here:
+       // prv.setVisible(true);
+        //this.setVisible(false);
+    }//GEN-LAST:event_hoteltabMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -177,10 +197,10 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hoteltab;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
