@@ -1,11 +1,17 @@
 package projectpack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JFrame;
 
 public class Profile extends javax.swing.JFrame {
 
     
-    //private JFrame prv ;
+    private int fromind, toind, cnt = 0;
+    private HashMap<Integer, ArrayList<String>> touristplace;
+    private HashMap<String, String> placename;
+    private HashMap<Integer, ArrayList<String>> hotelname;
+    private HashMap<customPair, ArrayList<String>> busname;
     /**
      * Creates new form Profile
      */
@@ -15,10 +21,17 @@ public class Profile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-//    public Profile(JFrame jf)
-//    {
-//        prv = jf;
-//    }
+    public Profile(HashMap<Integer, ArrayList<String>> tpname, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
+        initComponents();
+        setTitle("Tour in Bangladesh");
+        setLocationRelativeTo(null);
+        fromind = sti;
+        toind = di;
+        touristplace = tpname;
+        hotelname = hname;
+        busname = bname;
+        placename = pname;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,11 +44,11 @@ public class Profile extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        profiletotour = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        profiletobus = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        hoteltab = new javax.swing.JLabel();
+        profiletohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -45,7 +58,7 @@ public class Profile extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logoutbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -57,39 +70,49 @@ public class Profile extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(8, 49, 64));
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel1.setBackground(new java.awt.Color(8, 49, 64));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tourist Attractions");
-        jPanel3.add(jLabel1);
+        profiletotour.setBackground(new java.awt.Color(8, 49, 64));
+        profiletotour.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        profiletotour.setForeground(new java.awt.Color(255, 255, 255));
+        profiletotour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profiletotour.setText("Tourist Attractions");
+        profiletotour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profiletotourMouseClicked(evt);
+            }
+        });
+        jPanel3.add(profiletotour);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 40));
 
         jPanel4.setBackground(new java.awt.Color(8, 49, 64));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Bus Routes");
-        jPanel4.add(jLabel2);
+        profiletobus.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        profiletobus.setForeground(new java.awt.Color(255, 255, 255));
+        profiletobus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profiletobus.setText("Bus Routes");
+        profiletobus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profiletobusMouseClicked(evt);
+            }
+        });
+        jPanel4.add(profiletobus);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 40));
 
         jPanel5.setBackground(new java.awt.Color(8, 49, 64));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        hoteltab.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        hoteltab.setForeground(new java.awt.Color(255, 255, 255));
-        hoteltab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hoteltab.setText("Hotels");
-        hoteltab.addMouseListener(new java.awt.event.MouseAdapter() {
+        profiletohotel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        profiletohotel.setForeground(new java.awt.Color(255, 255, 255));
+        profiletohotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profiletohotel.setText("Hotels");
+        profiletohotel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hoteltabMouseClicked(evt);
+                profiletohotelMouseClicked(evt);
             }
         });
-        jPanel5.add(hoteltab);
+        jPanel5.add(profiletohotel);
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 40));
 
@@ -135,31 +158,50 @@ public class Profile extends javax.swing.JFrame {
 
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 360, 120));
 
-        jButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logoutbtn.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        logoutbtn.setText("Logout");
+        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logoutbtnActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 90, -1));
+        jPanel7.add(logoutbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 90, -1));
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 530, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
         // TODO add your handling code here:
         new Login().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_logoutbtnActionPerformed
 
-    private void hoteltabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hoteltabMouseClicked
+    private void profiletohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profiletohotelMouseClicked
+//       System.out.println(touristplace);
+//        System.out.println(placename);
+//        System.out.println(hotelname);
+//        System.out.println(busname);
+        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);
+       ht.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_profiletohotelMouseClicked
+
+    private void profiletotourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profiletotourMouseClicked
         // TODO add your handling code here:
-       // prv.setVisible(true);
-        //this.setVisible(false);
-    }//GEN-LAST:event_hoteltabMouseClicked
+        
+        TourPlaces tr = new TourPlaces(touristplace, placename, hotelname, busname, fromind, toind);
+        tr.setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_profiletotourMouseClicked
+
+    private void profiletobusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profiletobusMouseClicked
+        // TODO add your handling code here:
+       BusRoutes br = new BusRoutes(touristplace, placename, hotelname, busname, fromind, toind);
+       br.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_profiletobusMouseClicked
 
     /**
      * @param args the command line arguments
@@ -197,10 +239,6 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel hoteltab;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -214,5 +252,9 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JButton logoutbtn;
+    private javax.swing.JLabel profiletobus;
+    private javax.swing.JLabel profiletohotel;
+    private javax.swing.JLabel profiletotour;
     // End of variables declaration//GEN-END:variables
 }

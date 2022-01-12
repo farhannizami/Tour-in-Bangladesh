@@ -60,7 +60,7 @@ public class TourPlaces extends javax.swing.JFrame {
         ftp.setFromTo(fromind, toind);
 
         int n = touristplace.get(toind).size();
-        System.out.println(n);
+        //System.out.println(n);
 
         TourPlacePanel hbp[] = new TourPlacePanel[n];
         scpane.setPreferredSize(new Dimension(scpane.getWidth(), 50 + n * 100));
@@ -99,7 +99,7 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        busroutestab = new javax.swing.JLabel();
+        tourtobus = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         tourtohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -131,16 +131,16 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(8, 49, 64));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        busroutestab.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        busroutestab.setForeground(new java.awt.Color(255, 255, 255));
-        busroutestab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        busroutestab.setText("Bus Routes");
-        busroutestab.addMouseListener(new java.awt.event.MouseAdapter() {
+        tourtobus.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        tourtobus.setForeground(new java.awt.Color(255, 255, 255));
+        tourtobus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tourtobus.setText("Bus Routes");
+        tourtobus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                busroutestabMouseClicked(evt);
+                tourtobusMouseClicked(evt);
             }
         });
-        jPanel4.add(busroutestab);
+        jPanel4.add(tourtobus);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 40));
 
@@ -210,25 +210,20 @@ public class TourPlaces extends javax.swing.JFrame {
 
     private void tourtoprofileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtoprofileMouseClicked
         // TODO add your handling code here:
-        new Profile().setVisible(true);
-        this.setVisible(false);
+        Profile pf = new Profile(touristplace, placename, hotelname, busname, fromind, toind);
+        pf.setVisible(true);
+        dispose();
     }//GEN-LAST:event_tourtoprofileMouseClicked
 
-    private void busroutestabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busroutestabMouseClicked
-        // TODO add your handling code here:
-
-        BusRoutes br = new BusRoutes();
-        br.setInd(fromind, toind);
-        br.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_busroutestabMouseClicked
+    private void tourtobusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtobusMouseClicked
+       BusRoutes br = new BusRoutes(touristplace, placename, hotelname, busname, fromind, toind);
+       br.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_tourtobusMouseClicked
 
     private void tourtohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtohotelMouseClicked
-        //Hotels ht = new Hotels();
-        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);
-        System.out.println("Hoise");
+        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);      
         ht.setVisible(true);
-        //setVisible(false);
         dispose();
     }//GEN-LAST:event_tourtohotelMouseClicked
 
@@ -268,7 +263,6 @@ public class TourPlaces extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel busroutestab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -280,6 +274,7 @@ public class TourPlaces extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel scpane;
+    private javax.swing.JLabel tourtobus;
     private javax.swing.JLabel tourtohotel;
     private javax.swing.JLabel tourtoprofile;
     // End of variables declaration//GEN-END:variables
