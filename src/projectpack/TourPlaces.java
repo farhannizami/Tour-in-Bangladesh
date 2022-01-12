@@ -1,19 +1,18 @@
 package projectpack;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TourPlaces extends javax.swing.JFrame {
 
-    
-    
-    private int fromind,toind;
-    
-    public void setFromTo(int sti,int di)
-    {
-        frombox.setSelectedIndex(sti);
-        tobox.setSelectedIndex(di);
-        fromind = sti;
-        toind = di;
-    }
+    private int fromind, toind, cnt = 0;
+    private HashMap<Integer, ArrayList<String>> touristplace;
+    private HashMap<String, String> placename;
+    private HashMap<Integer, ArrayList<String>> hotelname;
+    private HashMap<customPair, ArrayList<String>> busname;
+
     /**
      * Creates new form TourPlaces
      */
@@ -21,6 +20,55 @@ public class TourPlaces extends javax.swing.JFrame {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
+    }
+
+    public TourPlaces(HashMap<Integer, ArrayList<String>> trp, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
+        initComponents();
+        setTitle("Tour in Bangladesh");
+        setLocationRelativeTo(null);
+        touristplace = trp;
+        placename = pname;
+        hotelname = hname;
+        busname = bname;
+        fromind = sti;
+        toind = di;
+        //System.out.println(touristplace);
+
+        load();
+    }
+
+    private void load() {
+        FromTOPanel ftp = new FromTOPanel();
+        scpane.add(ftp);
+        scpane.revalidate();
+        scpane.repaint();
+        ftp.setFromTo(fromind, toind);
+
+        int n = touristplace.get(toind).size();
+        System.out.println(n);
+
+        TourPlacePanel hbp[] = new TourPlacePanel[n];
+        scpane.setPreferredSize(new Dimension(scpane.getWidth(), 50 + n * 100));
+        scpane.revalidate();
+        scpane.repaint();
+
+        for (int i = 0; i < n; i++) {
+            hbp[i] = new TourPlacePanel();
+            if (cnt % 2 == 1) {
+                hbp[i].setWhite();
+            }
+            cnt++;
+            ArrayList<String> tmparr = (touristplace.get(toind));
+            //System.out.println(tmparr);
+            String s = tmparr.get(i);
+            //System.out.println(s);
+            String ss = placename.get(s);
+            // System.out.println(ss);
+            hbp[i].setPanelTilte(ss);
+            scpane.add(hbp[i]);
+            scpane.revalidate();
+            scpane.repaint();
+        }
     }
 
     /**
@@ -38,111 +86,14 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         busroutestab = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        tourtohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        tourtoprofile = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel8 = new javax.swing.JPanel();
-        tobox = new javax.swing.JComboBox<>();
-        frombox = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel39 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jPanel40 = new javax.swing.JPanel();
-        jButton50 = new javax.swing.JButton();
-        jButton51 = new javax.swing.JButton();
-        jPanel41 = new javax.swing.JPanel();
-        jButton52 = new javax.swing.JButton();
-        jButton53 = new javax.swing.JButton();
-        jPanel42 = new javax.swing.JPanel();
-        jButton54 = new javax.swing.JButton();
-        jButton55 = new javax.swing.JButton();
-        jPanel43 = new javax.swing.JPanel();
-        jButton56 = new javax.swing.JButton();
-        jPanel44 = new javax.swing.JPanel();
-        jButton57 = new javax.swing.JButton();
-        jButton58 = new javax.swing.JButton();
-        jPanel45 = new javax.swing.JPanel();
-        jButton59 = new javax.swing.JButton();
-        jButton60 = new javax.swing.JButton();
-        jPanel46 = new javax.swing.JPanel();
-        jButton61 = new javax.swing.JButton();
-        jButton62 = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel19 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
-        jPanel20 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jPanel21 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jPanel22 = new javax.swing.JPanel();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jPanel55 = new javax.swing.JPanel();
-        jButton77 = new javax.swing.JButton();
-        jPanel56 = new javax.swing.JPanel();
-        jButton78 = new javax.swing.JButton();
-        jButton79 = new javax.swing.JButton();
-        jPanel57 = new javax.swing.JPanel();
-        jButton80 = new javax.swing.JButton();
-        jButton81 = new javax.swing.JButton();
-        jPanel58 = new javax.swing.JPanel();
-        jButton82 = new javax.swing.JButton();
-        jButton83 = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
-        jPanel47 = new javax.swing.JPanel();
-        jButton63 = new javax.swing.JButton();
-        jPanel48 = new javax.swing.JPanel();
-        jButton64 = new javax.swing.JButton();
-        jButton65 = new javax.swing.JButton();
-        jPanel49 = new javax.swing.JPanel();
-        jButton66 = new javax.swing.JButton();
-        jButton67 = new javax.swing.JButton();
-        jPanel50 = new javax.swing.JPanel();
-        jButton68 = new javax.swing.JButton();
-        jButton69 = new javax.swing.JButton();
-        jPanel51 = new javax.swing.JPanel();
-        jButton70 = new javax.swing.JButton();
-        jPanel52 = new javax.swing.JPanel();
-        jButton71 = new javax.swing.JButton();
-        jButton72 = new javax.swing.JButton();
-        jPanel53 = new javax.swing.JPanel();
-        jButton73 = new javax.swing.JButton();
-        jButton74 = new javax.swing.JButton();
-        jPanel54 = new javax.swing.JPanel();
-        jButton75 = new javax.swing.JButton();
-        jButton76 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jPanel16 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jPanel18 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jPanel35 = new javax.swing.JPanel();
-        jButton43 = new javax.swing.JButton();
-        jPanel36 = new javax.swing.JPanel();
-        jButton44 = new javax.swing.JButton();
-        jButton45 = new javax.swing.JButton();
-        jPanel37 = new javax.swing.JPanel();
-        jButton46 = new javax.swing.JButton();
-        jButton47 = new javax.swing.JButton();
-        jPanel38 = new javax.swing.JPanel();
-        jButton48 = new javax.swing.JButton();
-        jButton49 = new javax.swing.JButton();
+        scpane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -181,32 +132,32 @@ public class TourPlaces extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(8, 49, 64));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Hotels");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tourtohotel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        tourtohotel.setForeground(new java.awt.Color(255, 255, 255));
+        tourtohotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tourtohotel.setText("Hotels");
+        tourtohotel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                tourtohotelMouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel3);
+        jPanel5.add(tourtohotel);
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 40));
 
         jPanel6.setBackground(new java.awt.Color(8, 49, 64));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Profile");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        tourtoprofile.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        tourtoprofile.setForeground(new java.awt.Color(255, 255, 255));
+        tourtoprofile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tourtoprofile.setText("Profile");
+        tourtoprofile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                tourtoprofileMouseClicked(evt);
             }
         });
-        jPanel6.add(jLabel5);
+        jPanel6.add(tourtoprofile);
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
 
@@ -228,344 +179,12 @@ public class TourPlaces extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(tobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 160, 30));
-
-        frombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(frombox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 160, 30));
-
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setText("To:");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 30, 30));
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setText("From:");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, 30));
-
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel39.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton4.setText("Details");
-        jPanel39.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton50.setText("Details");
-        jPanel40.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton51.setText("Book");
-        jPanel40.add(jButton51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel39.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton52.setText("Details");
-        jPanel41.add(jButton52, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton53.setText("Book");
-        jPanel41.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton54.setText("Details");
-        jPanel42.add(jButton54, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton55.setText("Book");
-        jPanel42.add(jButton55, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel41.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel39.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton56.setText("Details");
-        jPanel43.add(jButton56, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel44.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton57.setText("Details");
-        jPanel44.add(jButton57, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton58.setText("Book");
-        jPanel44.add(jButton58, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel43.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton59.setText("Details");
-        jPanel45.add(jButton59, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton60.setText("Book");
-        jPanel45.add(jButton60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel46.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton61.setText("Details");
-        jPanel46.add(jButton61, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton62.setText("Book");
-        jPanel46.add(jButton62, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel45.add(jPanel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel43.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel39.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel10.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 530, -1));
-
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton11.setText("Details");
-        jPanel19.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton13.setText("Details");
-        jPanel20.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton14.setText("Book");
-        jPanel20.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel19.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton15.setText("Details");
-        jPanel21.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton16.setText("Book");
-        jPanel21.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton17.setText("Details");
-        jPanel22.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton18.setText("Book");
-        jPanel22.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel21.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel19.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel11.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel8.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 530, 100));
-
-        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel55.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel55.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton77.setText("Details");
-        jPanel55.add(jButton77, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel56.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton78.setText("Details");
-        jPanel56.add(jButton78, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton79.setText("Book");
-        jPanel56.add(jButton79, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel55.add(jPanel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel57.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton80.setText("Details");
-        jPanel57.add(jButton80, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton81.setText("Book");
-        jPanel57.add(jButton81, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel58.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton82.setText("Details");
-        jPanel58.add(jButton82, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton83.setText("Book");
-        jPanel58.add(jButton83, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel57.add(jPanel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel55.add(jPanel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel13.add(jPanel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel8.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 530, -1));
-
-        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel47.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton63.setText("Details");
-        jPanel47.add(jButton63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel48.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton64.setText("Details");
-        jPanel48.add(jButton64, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton65.setText("Book");
-        jPanel48.add(jButton65, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel47.add(jPanel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel49.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton66.setText("Details");
-        jPanel49.add(jButton66, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton67.setText("Book");
-        jPanel49.add(jButton67, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel50.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton68.setText("Details");
-        jPanel50.add(jButton68, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton69.setText("Book");
-        jPanel50.add(jButton69, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel49.add(jPanel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel47.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel51.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton70.setText("Details");
-        jPanel51.add(jButton70, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel52.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton71.setText("Details");
-        jPanel52.add(jButton71, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton72.setText("Book");
-        jPanel52.add(jButton72, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel51.add(jPanel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel53.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton73.setText("Details");
-        jPanel53.add(jButton73, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton74.setText("Book");
-        jPanel53.add(jButton74, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel54.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton75.setText("Details");
-        jPanel54.add(jButton75, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton76.setText("Book");
-        jPanel54.add(jButton76, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel53.add(jPanel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel51.add(jPanel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel47.add(jPanel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel14.add(jPanel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel8.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 530, -1));
-
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setText("Details");
-        jPanel15.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton5.setText("Details");
-        jPanel16.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton6.setText("Book");
-        jPanel16.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel15.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton7.setText("Details");
-        jPanel17.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton8.setText("Book");
-        jPanel17.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton9.setText("Details");
-        jPanel18.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton10.setText("Book");
-        jPanel18.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel17.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel15.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton43.setText("Details");
-        jPanel35.add(jButton43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
-
-        jPanel36.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton44.setText("Details");
-        jPanel36.add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton45.setText("Book");
-        jPanel36.add(jButton45, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel35.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel37.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton46.setText("Details");
-        jPanel37.add(jButton46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton47.setText("Book");
-        jPanel37.add(jButton47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel38.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton48.setText("Details");
-        jPanel38.add(jButton48, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
-
-        jButton49.setText("Book");
-        jPanel38.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
-
-        jPanel37.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel35.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 90, 100));
-
-        jPanel15.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel9.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
-
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 100));
-
-        jScrollPane1.setViewportView(jPanel8);
+        scpane.setBackground(new java.awt.Color(255, 255, 255));
+        scpane.setMaximumSize(new java.awt.Dimension(530, 1000));
+        scpane.setMinimumSize(new java.awt.Dimension(530, 300));
+        scpane.setPreferredSize(new java.awt.Dimension(530, 700));
+        scpane.setLayout(new javax.swing.BoxLayout(scpane, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(scpane);
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 350));
 
@@ -574,30 +193,24 @@ public class TourPlaces extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void tourtoprofileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtoprofileMouseClicked
         // TODO add your handling code here:
         new Profile().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_tourtoprofileMouseClicked
 
     private void busroutestabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busroutestabMouseClicked
         // TODO add your handling code here:
-        
+
         BusRoutes br = new BusRoutes();
-        br.setInd(fromind,toind);
+        br.setInd(fromind, toind);
         br.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_busroutestabMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        fromind = frombox.getSelectedIndex();
-        toind = tobox.getSelectedIndex();
-        Hotels ht = new Hotels();
-        ht.setInd(fromind, toind);
-        ht.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel3MouseClicked
+    private void tourtohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtohotelMouseClicked
+        //Hotels ht = new Hotels();
+    }//GEN-LAST:event_tourtohotelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -636,115 +249,18 @@ public class TourPlaces extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel busroutestab;
-    private javax.swing.JComboBox<String> frombox;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton43;
-    private javax.swing.JButton jButton44;
-    private javax.swing.JButton jButton45;
-    private javax.swing.JButton jButton46;
-    private javax.swing.JButton jButton47;
-    private javax.swing.JButton jButton48;
-    private javax.swing.JButton jButton49;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton50;
-    private javax.swing.JButton jButton51;
-    private javax.swing.JButton jButton52;
-    private javax.swing.JButton jButton53;
-    private javax.swing.JButton jButton54;
-    private javax.swing.JButton jButton55;
-    private javax.swing.JButton jButton56;
-    private javax.swing.JButton jButton57;
-    private javax.swing.JButton jButton58;
-    private javax.swing.JButton jButton59;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton60;
-    private javax.swing.JButton jButton61;
-    private javax.swing.JButton jButton62;
-    private javax.swing.JButton jButton63;
-    private javax.swing.JButton jButton64;
-    private javax.swing.JButton jButton65;
-    private javax.swing.JButton jButton66;
-    private javax.swing.JButton jButton67;
-    private javax.swing.JButton jButton68;
-    private javax.swing.JButton jButton69;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton70;
-    private javax.swing.JButton jButton71;
-    private javax.swing.JButton jButton72;
-    private javax.swing.JButton jButton73;
-    private javax.swing.JButton jButton74;
-    private javax.swing.JButton jButton75;
-    private javax.swing.JButton jButton76;
-    private javax.swing.JButton jButton77;
-    private javax.swing.JButton jButton78;
-    private javax.swing.JButton jButton79;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton80;
-    private javax.swing.JButton jButton81;
-    private javax.swing.JButton jButton82;
-    private javax.swing.JButton jButton83;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
-    private javax.swing.JPanel jPanel44;
-    private javax.swing.JPanel jPanel45;
-    private javax.swing.JPanel jPanel46;
-    private javax.swing.JPanel jPanel47;
-    private javax.swing.JPanel jPanel48;
-    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel50;
-    private javax.swing.JPanel jPanel51;
-    private javax.swing.JPanel jPanel52;
-    private javax.swing.JPanel jPanel53;
-    private javax.swing.JPanel jPanel54;
-    private javax.swing.JPanel jPanel55;
-    private javax.swing.JPanel jPanel56;
-    private javax.swing.JPanel jPanel57;
-    private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> tobox;
+    private javax.swing.JPanel scpane;
+    private javax.swing.JLabel tourtohotel;
+    private javax.swing.JLabel tourtoprofile;
     // End of variables declaration//GEN-END:variables
 }

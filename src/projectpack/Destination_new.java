@@ -1,10 +1,19 @@
 package projectpack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 public class Destination_new extends javax.swing.JFrame {
 
+    
+    private HashMap<Integer,ArrayList<String>> touristplace = new HashMap<Integer, ArrayList<String>>();
+    private HashMap<String,String> placename = new HashMap<String,String>();
+    private HashMap<Integer,ArrayList<String>> hotelname = new HashMap<Integer,ArrayList<String>>();
+    private HashMap<customPair,ArrayList<String>> busname =new HashMap<customPair,ArrayList<String>>();
+    
     /**
      * Creates new form Destination_new
      */
@@ -12,7 +21,109 @@ public class Destination_new extends javax.swing.JFrame {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
+        
+        ArrayList<String> ar1 = new ArrayList<>();
+        ArrayList<String> ar2 = new ArrayList<>();
+        ArrayList<String> ar3 = new ArrayList<>();
+        ArrayList<String> ar4 = new ArrayList<>();
+        ArrayList<String> ar5 = new ArrayList<>();
+        ArrayList<String> ar6 = new ArrayList<>();
+        ArrayList<String> ar7 = new ArrayList<>();
+        
+        //ar1.add("Dhaka");
+        ar1.add("ahsan_manjil.txt");
+        ar1.add("national_zoo.txt");
+        ar1.add("lalbager_kella.txt");
+        ar1.add("ramna_park.txt");
+        
+        touristplace.put(1, ar1);
+        
+        //ar2.add("Chottogram");
+        ar2.add("karnafuli.txt");
+        ar2.add("chandranath_pahar.txt");
+        ar2.add("mohamaya_lake.txt");
+        ar2.add("foyers_lake.txt");
+        touristplace.put(2, ar2);
+        
+        //ar3.add("Cox's Bazar");
+        ar3.add("sea_beach.txt");
+        ar3.add("ramu.txt");
+        ar3.add("himchori.txt");
+        ar3.add("inani_beach.txt");
+        ar3.add("marine_drive.txt");
+        touristplace.put(3, ar3);
+        
+        //ar4.add("Sylhet");
+        ar4.add("jaflong.txt");
+        ar4.add("sreemongol.txt");
+        ar4.add("ratargul.txt");
+        ar4.add("rema.txt");
+        touristplace.put(4, ar4);
+        
+        //ar5.add("Bandarban");
+        ar5.add("nilgiri.txt");
+        ar5.add("nilachal.txt");
+        ar5.add("nafakhum.txt");
+        ar5.add("sajek.txt");
+        touristplace.put(5, ar5);
+        
+        //ar7.add("Kuakata");
+        ar7.add("kuakata_beach.txt");
+        ar7.add("sonar_char.txt");
+        ar7.add("sutki_palli.txt");
+        touristplace.put(7, ar7);
+        
+        //ar6.add("Rangamati");
+        ar6.add("kaptai_lake.txt");
+        ar6.add("shovolong.txt");
+        ar6.add("hanging_bridge.txt");
+        ar6.add("cultural_meseum.txt");
+        touristplace.put(6, ar6);
+        
+        //dhaka
+        placename.put("ahsan_manjil.txt", "Ahsan Manjil");
+        placename.put("national_zoo.txt", "National Zoo");
+        placename.put("lalbager_kella.txt", "Lalbager Kella");
+        placename.put("ramna_park.txt", "Ramna Park");
+        
+        //ctg
+        placename.put("karnafuli.txt", "Karnafuli River");
+        placename.put("chandranath_pahar.txt", "Chandranath Hill");
+        placename.put("mohamaya_lake.txt", "Mohamaya Lake");
+        placename.put("foyers_lake.txt", "Foyers Lake");
+        
+        //coxbazar
+        placename.put("sea_beach.txt", "Sea Beach");
+        placename.put("ramu.txt", "Ramu Temple");
+        placename.put("himchori.txt", "Himchori");
+        placename.put("inani_beach.txt", "Inani Beach");
+        placename.put("marine_drive.txt", "Marine Drive");
+        
+        //sylhet
+        placename.put("jaflong.txt", "Jaflong");
+        placename.put("sreemongol.txt", "Sreemongol");
+        placename.put("ratargul.txt", "Ratargul");
+        placename.put("rema.txt", "Rema");
+        
+        //bandarban
+        placename.put("nilgiri.txt", "Nilgiri");
+        placename.put("nilachal.txt", "Nilachal");
+        placename.put("nafakhum.txt", "Nafakhum");
+        placename.put("sajek.txt", "Sajek");
+        
+        //rangamati
+        placename.put("kaptai_lake.txt", "Kaptai Lake");
+        placename.put("shovolong.txt", "Shovolong Waterfall");
+        placename.put("hanging_bridge.txt", "Hanging Bridge");
+        placename.put("cultural_meseum.txt", "Cultural Meseum");
+        
+        // Kuakata
+        placename.put("kuakata_beach.txt", "Kuakata Beach");
+        placename.put("sonar_char.txt", "Sonar Char");
+        placename.put("sutki_palli.txt", "Sutki Palli");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,7 +138,7 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        profilelb = new javax.swing.JLabel();
+        logoutlb = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -61,16 +172,16 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(8, 49, 64));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        profilelb.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        profilelb.setForeground(new java.awt.Color(255, 255, 255));
-        profilelb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        profilelb.setText("Logout");
-        profilelb.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutlb.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        logoutlb.setForeground(new java.awt.Color(255, 255, 255));
+        logoutlb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoutlb.setText("Logout");
+        logoutlb.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profilelbMouseClicked(evt);
+                logoutlbMouseClicked(evt);
             }
         });
-        jPanel4.add(profilelb);
+        jPanel4.add(logoutlb);
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 40));
 
@@ -101,32 +212,40 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel1.setText("To:");
-        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 30, 40));
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 30, 30));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel3.setText("From: ");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 60, 40));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 30));
 
-        to_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        to_slt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        to_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
         to_slt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 to_sltActionPerformed(evt);
             }
         });
-        jPanel8.add(to_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 370, -1));
+        jPanel8.add(to_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 370, 30));
 
-        from_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
-        jPanel8.add(from_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 370, -1));
+        from_slt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        from_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
+        from_slt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                from_sltActionPerformed(evt);
+            }
+        });
+        jPanel8.add(from_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 370, 30));
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Find Route");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, 30));
 
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 350));
 
@@ -135,16 +254,17 @@ public class Destination_new extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void profilelbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilelbMouseClicked
+    private void logoutlbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutlbMouseClicked
         // TODO add your handling code here:
         new Login().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_profilelbMouseClicked
+    }//GEN-LAST:event_logoutlbMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int st = from_slt.getSelectedIndex();
         int to = to_slt.getSelectedIndex();
+        //System.out.println(touristplace);
         if(st==0 && to==0)
         {
             JFrame msg = new JFrame();
@@ -167,8 +287,8 @@ public class Destination_new extends javax.swing.JFrame {
         }
         else
         {
-            TourPlaces t = new TourPlaces();
-            t.setFromTo(st, to);
+            TourPlaces t = new TourPlaces(touristplace,placename,hotelname,busname,st,to);
+            //t.setFromTo(st, to);
             t.setVisible(true);
             this.setVisible(false);
         }
@@ -178,6 +298,10 @@ public class Destination_new extends javax.swing.JFrame {
     private void to_sltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_to_sltActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_to_sltActionPerformed
+
+    private void from_sltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_from_sltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_from_sltActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +353,7 @@ public class Destination_new extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JLabel profilelb;
+    private javax.swing.JLabel logoutlb;
     private javax.swing.JComboBox to_slt;
     // End of variables declaration//GEN-END:variables
 }
