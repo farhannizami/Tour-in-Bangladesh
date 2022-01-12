@@ -3,6 +3,7 @@ package projectpack;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Profile extends javax.swing.JFrame {
 
@@ -51,6 +52,7 @@ public class Profile extends javax.swing.JFrame {
         profiletohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -127,6 +129,14 @@ public class Profile extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
 
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectpack/Images/icons8-back-arrow-30.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 430));
 
         jPanel2.setBackground(new java.awt.Color(58, 104, 233));
@@ -174,8 +184,15 @@ public class Profile extends javax.swing.JFrame {
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
         // TODO add your handling code here:
-        new Login().setVisible(true);
-        this.dispose();
+        JFrame frame  = new JFrame();
+        int n = JOptionPane.showConfirmDialog(frame,"Would you like to Logout?","An Inane Question",JOptionPane.YES_NO_OPTION);
+        //System.out.println(n);
+        if(n==0)
+        {
+            Login lg = new Login();
+            lg.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void profiletohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profiletohotelMouseClicked
@@ -202,6 +219,13 @@ public class Profile extends javax.swing.JFrame {
        br.setVisible(true);
        dispose();
     }//GEN-LAST:event_profiletobusMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        // TODO add your handling code here:
+        Destination_new dn = new Destination_new(fromind,toind);
+        dn.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -239,6 +263,7 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

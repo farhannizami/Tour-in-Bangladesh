@@ -104,6 +104,7 @@ public class TourPlaces extends javax.swing.JFrame {
         tourtohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         tourtoprofile = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -176,6 +177,14 @@ public class TourPlaces extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
 
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectpack/Images/icons8-back-arrow-30.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 430));
 
         jPanel2.setBackground(new java.awt.Color(58, 104, 233));
@@ -227,6 +236,13 @@ public class TourPlaces extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_tourtohotelMouseClicked
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        // TODO add your handling code here:
+        Destination_new dn = new Destination_new(fromind,toind);
+        dn.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +279,7 @@ public class TourPlaces extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

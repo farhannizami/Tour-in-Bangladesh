@@ -89,6 +89,7 @@ public class BusRoutes extends javax.swing.JFrame {
         bustohotel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         bustoprofile = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -184,6 +185,14 @@ public class BusRoutes extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
 
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectpack/Images/icons8-back-arrow-30.png"))); // NOI18N
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 430));
 
         pack();
@@ -208,6 +217,13 @@ public class BusRoutes extends javax.swing.JFrame {
         ht.setVisible(true);
         dispose();
     }//GEN-LAST:event_bustohotelMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        // TODO add your handling code here:
+        Destination_new dn = new Destination_new(fromind,toind);
+        dn.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -246,6 +262,7 @@ public class BusRoutes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JLabel bustohotel;
     private javax.swing.JLabel bustoprofile;
     private javax.swing.JLabel bustotour;
