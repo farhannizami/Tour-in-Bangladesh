@@ -5,35 +5,36 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class Hotels extends javax.swing.JFrame {
 
-    
-    private int fromind,toind,cnt=0;
-    private HashMap<Integer,ArrayList<String>> touristplace;
-    private HashMap<Integer,ArrayList<String>> hotelname;
-    private HashMap<customPair,ArrayList<String>> busname;
+    private int fromind, toind, cnt = 0;
+    private HashMap<Integer, ArrayList<String>> touristplace;
+    private HashMap<String, String> placename;
+    private HashMap<Integer, ArrayList<String>> hotelname;
+    private HashMap<customPair, ArrayList<String>> busname;
+
     /**
      * Creates new form Hotels
      */
-     public Hotels() {
+    public Hotels() {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
     }
-    public Hotels(HashMap<Integer,ArrayList<String>>tmp ,HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname,int sti,int di) {
+
+    public Hotels(HashMap<Integer, ArrayList<String>> tpname, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
         fromind = sti;
         toind = di;
-        touristplace = tmp;
+        touristplace = tpname;
         hotelname = hname;
         busname = bname;
+        placename = pname;
         load();
     }
-    
-    
+
     private void load() {
         FromTOPanel ftp = new FromTOPanel();
         scpane.add(ftp);
@@ -55,13 +56,12 @@ public class Hotels extends javax.swing.JFrame {
                 hbp[i].setWhite();
             }
             cnt++;
-            
+            hbp[i].setPanelTilte(hotelname.get(toind).get(i));
             scpane.add(hbp[i]);
             scpane.revalidate();
             scpane.repaint();
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,7 +75,7 @@ public class Hotels extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        hoteltotour = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -108,17 +108,17 @@ public class Hotels extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(8, 49, 64));
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel1.setBackground(new java.awt.Color(8, 49, 64));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tourist Attractions");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        hoteltotour.setBackground(new java.awt.Color(8, 49, 64));
+        hoteltotour.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        hoteltotour.setForeground(new java.awt.Color(255, 255, 255));
+        hoteltotour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hoteltotour.setText("Tourist Attractions");
+        hoteltotour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                hoteltotourMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel1);
+        jPanel3.add(hoteltotour);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 40));
 
@@ -214,15 +214,18 @@ public class Hotels extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_profiletabMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        //fromind = frombox.getSelectedIndex();
-        //toind = tobox.getSelectedIndex();
-        TourPlaces t = new TourPlaces();
-        t.setFromTo(fromind, toind);
-        t.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    private void hoteltotourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hoteltotourMouseClicked
+        
+        System.out.println("Ball");
+        System.out.println(touristplace);
+        System.out.println(placename);
+        System.out.println(hotelname);
+        TourPlaces tpp = new TourPlaces(touristplace, placename, hotelname, busname, fromind, toind);
+        
+        tpp.setVisible(true);
+        //this.setVisible(false);
+        dispose();
+    }//GEN-LAST:event_hoteltotourMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -268,7 +271,7 @@ public class Hotels extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel hoteltotour;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

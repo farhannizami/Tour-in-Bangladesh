@@ -121,6 +121,68 @@ public class Destination_new extends javax.swing.JFrame {
         placename.put("kuakata_beach.txt", "Kuakata Beach");
         placename.put("sonar_char.txt", "Sonar Char");
         placename.put("sutki_palli.txt", "Sutki Palli");
+        
+        //Hotels add
+        ArrayList<String> hr1 = new ArrayList<>();
+        ArrayList<String> hr2 = new ArrayList<>();
+        ArrayList<String> hr3 = new ArrayList<>();
+        ArrayList<String> hr4 = new ArrayList<>();
+        ArrayList<String> hr5 = new ArrayList<>();
+        ArrayList<String> hr6 = new ArrayList<>();
+        ArrayList<String> hr7 = new ArrayList<>();
+        
+        //dhaka
+        hr1.add("Sheraton");
+        hr1.add("Radisson Blu");
+        hr1.add("Hotel Saladia");
+        hr1.add("Regant Palace");
+        hr1.add("Nomina Abashik");
+        hotelname.put(1, hr1);
+        
+        //ctg
+        hr2.add("Radisson Blu Chittagong");
+        hr2.add("Hilton City Residential");
+        hr2.add("Hotel Star Park");
+        hr2.add("Hotel Tower Inn");
+        hotelname.put(2, hr2);
+        
+        //cbazar
+        hr3.add("Cox's Inn");
+        hr3.add("White Orchid");
+        hr3.add("Uni Resort");
+        hr3.add("Shopno Bilash");
+        hr3.add("Hotel Pink Shore");
+        hr3.add("Hotel Sea Crown");
+        hotelname.put(3, hr3);
+        
+        //sylhet
+        hr4.add("Noorjahan Grand");
+        hr4.add("Rose View Hotel");
+        hr4.add("Bottom Hill Palace");
+        hr4.add("Hotel Musafir");
+        hotelname.put(4, hr4);
+        
+        //bandarban
+        hr5.add("Hotel Plaza");
+        hr5.add("Hotel Hillview");
+        hr5.add("Nolambori Resort");
+        hr5.add("Fanush Resort");
+        hr5.add("Hotel Three star");
+        hotelname.put(5, hr5);
+        
+        //rangamati
+        hr6.add("Hotel Moti Mahal");
+        hr6.add("Hotel Prince");
+        hr6.add("Aronnak Holiday");
+        hr6.add("Green Castle");
+        hotelname.put(6, hr6);
+        
+        //kuakata
+        hr7.add("Swapnorajjo");
+        hr7.add("Hotel Graver Inn");
+        hr7.add("Hotel Khan Palace");
+        hotelname.put(7, hr7);
+        
     }
     
     
@@ -290,7 +352,8 @@ public class Destination_new extends javax.swing.JFrame {
             TourPlaces t = new TourPlaces(touristplace,placename,hotelname,busname,st,to);
             //t.setFromTo(st, to);
             t.setVisible(true);
-            this.setVisible(false);
+            //this.setVisible(false);
+            dispose();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

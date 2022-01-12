@@ -22,11 +22,11 @@ public class TourPlaces extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public TourPlaces(HashMap<Integer, ArrayList<String>> trp, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
+    public TourPlaces(HashMap<Integer, ArrayList<String>> tpname, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
         initComponents();
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
-        touristplace = trp;
+        touristplace = tpname;
         placename = pname;
         hotelname = hname;
         busname = bname;
@@ -36,6 +36,21 @@ public class TourPlaces extends javax.swing.JFrame {
 
         load();
     }
+    
+//    public TourPlaces(HashMap<Integer, ArrayList<String>> trp, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
+//        initComponents();
+//        setTitle("Tour in Bangladesh");
+//        setLocationRelativeTo(null);
+//        touristplace = trp;
+//        //placename = pname;
+//        hotelname = hname;
+//        busname = bname;
+//        fromind = sti;
+//        toind = di;
+//        //System.out.println(touristplace);
+//
+//        load();
+//    }
 
     private void load() {
         FromTOPanel ftp = new FromTOPanel();
@@ -58,13 +73,13 @@ public class TourPlaces extends javax.swing.JFrame {
                 hbp[i].setWhite();
             }
             cnt++;
-            ArrayList<String> tmparr = (touristplace.get(toind));
+            //ArrayList<String> tmparr = (touristplace.get(toind));
             //System.out.println(tmparr);
-            String s = tmparr.get(i);
+            //String s = tmparr.get(i);
             //System.out.println(s);
-            String ss = placename.get(s);
+            //String ss = placename.get(s);
             // System.out.println(ss);
-            hbp[i].setPanelTilte(ss);
+            hbp[i].setPanelTilte(placename.get(touristplace.get(toind).get(i)));
             scpane.add(hbp[i]);
             scpane.revalidate();
             scpane.repaint();
@@ -210,6 +225,11 @@ public class TourPlaces extends javax.swing.JFrame {
 
     private void tourtohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tourtohotelMouseClicked
         //Hotels ht = new Hotels();
+        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);
+        System.out.println("Hoise");
+        ht.setVisible(true);
+        //setVisible(false);
+        dispose();
     }//GEN-LAST:event_tourtohotelMouseClicked
 
     /**

@@ -13,6 +13,11 @@ public class HotelBookPanel extends javax.swing.JPanel {
         background.setBackground(Color.white);
         btnback.setBackground(Color.white);
     }
+    
+    public void setPanelTilte(String s)
+    {
+        title.setText(s);
+    }
     /**
      * Creates new form HotelBookPanel
      */
@@ -48,6 +53,7 @@ public class HotelBookPanel extends javax.swing.JPanel {
         jPanel18 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
 
         background.setMaximumSize(new java.awt.Dimension(530, 100));
         background.setMinimumSize(new java.awt.Dimension(530, 100));
@@ -95,6 +101,10 @@ public class HotelBookPanel extends javax.swing.JPanel {
 
         background.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
 
+        title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(58, 104, 233));
+        background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 340, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,5 +134,6 @@ public class HotelBookPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
