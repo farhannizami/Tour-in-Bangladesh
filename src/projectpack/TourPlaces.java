@@ -37,20 +37,6 @@ public class TourPlaces extends javax.swing.JFrame {
         load();
     }
     
-//    public TourPlaces(HashMap<Integer, ArrayList<String>> trp, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
-//        initComponents();
-//        setTitle("Tour in Bangladesh");
-//        setLocationRelativeTo(null);
-//        touristplace = trp;
-//        //placename = pname;
-//        hotelname = hname;
-//        busname = bname;
-//        fromind = sti;
-//        toind = di;
-//        //System.out.println(touristplace);
-//
-//        load();
-//    }
 
     private void load() {
         FromTOPanel ftp = new FromTOPanel();
@@ -68,7 +54,7 @@ public class TourPlaces extends javax.swing.JFrame {
         scpane.repaint();
 
         for (int i = 0; i < n; i++) {
-            hbp[i] = new TourPlacePanel();
+            hbp[i] = new TourPlacePanel(touristplace.get(toind).get(i),placename.get(touristplace.get(toind).get(i)));
             if (cnt % 2 == 1) {
                 hbp[i].setWhite();
             }

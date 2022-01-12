@@ -3,15 +3,27 @@ package projectpack;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.HeadlessException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class TourPlacePanel extends javax.swing.JPanel {
 
+    
+    private String path ,head;
     /**
      * Creates new form TourPlacePanel
      */
     public TourPlacePanel() {
         initComponents();
+    }
+    
+    public TourPlacePanel(String paths, String heads) {
+        initComponents();
+        path = paths;
+        head = heads;
     }
     
     public void setWhite()
@@ -40,7 +52,7 @@ public class TourPlacePanel extends javax.swing.JPanel {
 
         background = new javax.swing.JPanel();
         btnBack = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        detailsbtn = new javax.swing.JButton();
         title = new javax.swing.JLabel();
 
         background.setMaximumSize(new java.awt.Dimension(530, 100));
@@ -51,13 +63,13 @@ public class TourPlacePanel extends javax.swing.JPanel {
         btnBack.setMaximumSize(new java.awt.Dimension(520, 100));
         btnBack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("Details");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        detailsbtn.setText("Details");
+        detailsbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                detailsbtnActionPerformed(evt);
             }
         });
-        btnBack.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
+        btnBack.add(detailsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, -1));
 
         background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 90, 100));
 
@@ -79,15 +91,18 @@ public class TourPlacePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void detailsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsbtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        DetailsWindow dw = new DetailsWindow(path, head);
+        dw.setVisible(true);
+        
+    }//GEN-LAST:event_detailsbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnBack;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton detailsbtn;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

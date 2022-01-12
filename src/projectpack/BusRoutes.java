@@ -47,7 +47,7 @@ public class BusRoutes extends javax.swing.JFrame {
         scpane.repaint();
         ftp.setFromTo(fromind, toind);
         int mini = Math.min(fromind, toind);
-        int maxi = Math.max(fromind,toind);
+        int maxi = Math.max(fromind, toind);
         String fpath = Integer.toString(mini) + Integer.toString(maxi);
         System.out.println(fpath);
         try {
@@ -89,7 +89,7 @@ public class BusRoutes extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BusRoutes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
