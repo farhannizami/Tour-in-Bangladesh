@@ -192,6 +192,7 @@ public class Destination_new extends javax.swing.JFrame {
         hr7.add("Hotel Graver Inn");
         hr7.add("Hotel Khan Palace");
         hotelname.put(7, hr7);
+        
     }
 
     /**

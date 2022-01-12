@@ -1,18 +1,23 @@
-
 package projectpack;
 
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BusRoutes extends javax.swing.JFrame {
 
-    
     private int fromind, toind, cnt = 0;
     private HashMap<Integer, ArrayList<String>> touristplace;
     private HashMap<String, String> placename;
     private HashMap<Integer, ArrayList<String>> hotelname;
     private HashMap<customPair, ArrayList<String>> busname;
+
     /**
      * Creates new form BusRoutes
      */
@@ -21,8 +26,7 @@ public class BusRoutes extends javax.swing.JFrame {
         setTitle("Tour in Bangladesh");
         setLocationRelativeTo(null);
     }
-    
-    
+
     public BusRoutes(HashMap<Integer, ArrayList<String>> tpname, HashMap<String, String> pname, HashMap<Integer, ArrayList<String>> hname, HashMap<customPair, ArrayList<String>> bname, int sti, int di) {
         initComponents();
         setTitle("Tour in Bangladesh");
@@ -35,37 +39,59 @@ public class BusRoutes extends javax.swing.JFrame {
         placename = pname;
         load();
     }
-    
+
     private void load() {
         FromTOPanel ftp = new FromTOPanel();
         scpane.add(ftp);
         scpane.revalidate();
         scpane.repaint();
         ftp.setFromTo(fromind, toind);
+        int mini = Math.min(fromind, toind);
+        int maxi = Math.max(fromind,toind);
+        String fpath = Integer.toString(mini) + Integer.toString(maxi);
+        System.out.println(fpath);
+        try {
+            FileReader fr = new FileReader("src\\Files\\" + fpath + ".txt");
+            BufferedReader fbr = new BufferedReader(fr);
+            String allbus = "";
+            int i;
+            try {
+                while ((i = fbr.read()) != -1) {
 
-        //int n = touristplace.get(toind).size();
-        //System.out.println(n);
-        int n = 8;
+                    allbus += (char) i;
+                }
+                System.out.println(allbus);
+                String[] sepbus = allbus.split(";");
 
-        HotelBookPanel hbp[] = new HotelBookPanel[n];
-        scpane.setPreferredSize(new Dimension(scpane.getWidth(), 50 + n * 100));
-        scpane.revalidate();
-        scpane.repaint();
+                int n = sepbus.length;
 
-        for (int i = 0; i < n; i++) {
-            hbp[i] = new HotelBookPanel();
-            if (cnt % 2 == 1) {
-                hbp[i].setWhite();
+                HotelBookPanel hbp[] = new HotelBookPanel[n];
+                scpane.setPreferredSize(new Dimension(scpane.getWidth(), 50 + n * 100));
+                scpane.revalidate();
+                scpane.repaint();
+
+                for (i = 0; i < n; i++) {
+                    hbp[i] = new HotelBookPanel();
+                    if (cnt % 2 == 1) {
+                        hbp[i].setWhite();
+                    }
+                    cnt++;
+                    //hbp[i].setPanelTilte(hotelname.get(toind).get(i));
+                    hbp[i].setPanelTilte(sepbus[i]);
+                    scpane.add(hbp[i]);
+                    scpane.revalidate();
+                    scpane.repaint();
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(BusRoutes.class.getName()).log(Level.SEVERE, null, ex);
             }
-            cnt++;
-            //hbp[i].setPanelTilte(hotelname.get(toind).get(i));
-            scpane.add(hbp[i]);
-            scpane.revalidate();
-            scpane.repaint();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BusRoutes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,19 +234,19 @@ public class BusRoutes extends javax.swing.JFrame {
         // TODO add your handling code here:
         TourPlaces tr = new TourPlaces(touristplace, placename, hotelname, busname, fromind, toind);
         tr.setVisible(true);
-        dispose();   
+        dispose();
     }//GEN-LAST:event_bustotourMouseClicked
 
     private void bustohotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bustohotelMouseClicked
         // TODO add your handling code here:
-        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);        
+        Hotels ht = new Hotels(touristplace, placename, hotelname, busname, fromind, toind);
         ht.setVisible(true);
         dispose();
     }//GEN-LAST:event_bustohotelMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         // TODO add your handling code here:
-        Destination_new dn = new Destination_new(fromind,toind);
+        Destination_new dn = new Destination_new(fromind, toind);
         dn.setVisible(true);
         dispose();
     }//GEN-LAST:event_backMouseClicked
