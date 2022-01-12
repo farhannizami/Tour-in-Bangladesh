@@ -88,7 +88,7 @@ public class DetailsWindow extends javax.swing.JFrame {
         detailstitle.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
         detailstitle.setForeground(new java.awt.Color(255, 255, 255));
         detailstitle.setText("Available Hotels");
-        jPanel3.add(detailstitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 160, 50));
+        jPanel3.add(detailstitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 330, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
