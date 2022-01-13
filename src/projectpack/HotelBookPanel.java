@@ -7,7 +7,7 @@ import java.awt.Color;
 public class HotelBookPanel extends javax.swing.JPanel {
 
     
-    
+    private String busfrom,busto;
     public void setWhite()
     {
         background.setBackground(Color.white);
@@ -23,6 +23,12 @@ public class HotelBookPanel extends javax.swing.JPanel {
      */
     public HotelBookPanel() {
         initComponents();
+    }
+    
+    public HotelBookPanel(String from,String to) {
+        initComponents();
+        busfrom = from;
+        busto = to;
     }
     
     public void setJPB()
@@ -67,6 +73,11 @@ public class HotelBookPanel extends javax.swing.JPanel {
         btnback.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
 
         jButton4.setText("Book");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         btnback.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, -1));
 
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,6 +129,12 @@ public class HotelBookPanel extends javax.swing.JPanel {
             .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        BusBook bk = new BusBook(busfrom,busto,title.getText());
+        bk.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

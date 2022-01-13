@@ -63,7 +63,7 @@
               <StringArray count="8">
                 <StringItem index="0" value="Choose Destination"/>
                 <StringItem index="1" value="Dhaka"/>
-                <StringItem index="2" value="Chottogram"/>
+                <StringItem index="2" value="Chattogram"/>
                 <StringItem index="3" value="Cox&apos;s Bazar"/>
                 <StringItem index="4" value="Sylhet"/>
                 <StringItem index="5" value="Bandonban"/>
@@ -109,7 +109,7 @@
               <StringArray count="8">
                 <StringItem index="0" value="Choose Start Location"/>
                 <StringItem index="1" value="Dhaka"/>
-                <StringItem index="2" value="Chottogram"/>
+                <StringItem index="2" value="Chattogram"/>
                 <StringItem index="3" value="Cox&apos;s Bazar"/>
                 <StringItem index="4" value="Sylhet"/>
                 <StringItem index="5" value="Bandonban"/>

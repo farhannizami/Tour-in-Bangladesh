@@ -69,9 +69,12 @@ public class BusRoutes extends javax.swing.JFrame {
                 scpane.setPreferredSize(new Dimension(scpane.getWidth(), 50 + n * 100));
                 scpane.revalidate();
                 scpane.repaint();
+                
+                
+                String[] names  = {"Choose Start Location","Dhaka","Chattogram","Cox's Bazar","Sylhet","Bandonban","Rangamati","Kuakata"};
 
                 for (i = 0; i < n; i++) {
-                    hbp[i] = new HotelBookPanel();
+                    hbp[i] = new HotelBookPanel(names[fromind],names[toind]);
                     if (cnt % 2 == 1) {
                         hbp[i].setWhite();
                     }

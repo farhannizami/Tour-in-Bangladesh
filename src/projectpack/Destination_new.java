@@ -300,7 +300,7 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 30));
 
         to_slt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        to_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
+        to_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Destination", "Dhaka", "Chattogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
         to_slt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 to_sltActionPerformed(evt);
@@ -309,7 +309,7 @@ public class Destination_new extends javax.swing.JFrame {
         jPanel8.add(to_slt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 370, 30));
 
         from_slt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        from_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
+        from_slt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Start Location", "Dhaka", "Chattogram", "Cox's Bazar", "Sylhet", "Bandarban", "Rangamati", "Kuakata" }));
         from_slt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 from_sltActionPerformed(evt);

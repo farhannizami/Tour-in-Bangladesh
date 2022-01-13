@@ -42,7 +42,7 @@ public class FromTOPanel extends javax.swing.JPanel {
         jPanel35.setPreferredSize(new java.awt.Dimension(530, 50));
         jPanel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        tobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Destination", "Dhaka", "Chattogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
         tobox.setMaximumSize(new java.awt.Dimension(125, 19));
         tobox.setMinimumSize(new java.awt.Dimension(125, 19));
         tobox.setPreferredSize(new java.awt.Dimension(125, 19));
@@ -52,7 +52,7 @@ public class FromTOPanel extends javax.swing.JPanel {
         jLabel4.setText("To:");
         jPanel35.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 30, 30));
 
-        frombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chottogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
+        frombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Start Location", "Dhaka", "Chattogram", "Cox's Bazar", "Sylhet", "Bandonban", "Rangamati", "Kuakata" }));
         frombox.setMaximumSize(new java.awt.Dimension(125, 19));
         frombox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
